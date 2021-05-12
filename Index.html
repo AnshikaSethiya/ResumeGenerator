@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Generator</title>
+    <!----------------------------------------------------->
+    <link rel="stylesheet" href="style.css">
+    <!----------------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+     crossorigin="anonymous">
+    <!--------------------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!---------------------------------------------------------------->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&family=Itim&display=swap" rel="stylesheet">
+    </head>
+<body>
+<div class="dibba">
+    <div class="container mx-auto mt-5 box mb-5" style="width:50%;" id="cv-form">
+        <h1 class="text-center my-2 pb-1 heading " style="text-decoration: underline;">Resume Generator</h1>
+        <h3>Personal Information</h3>
+           <div class="form-group">
+               <label for="nameField">Your Name</label>
+               <input type="text"
+                id="nameField" 
+                placeholder="Enter Here" 
+                class="form-control"/>
+           </div>
+
+           <div class="form-group mt-2">
+                <label for="ContactField">Your Contact Number</label>
+                <input type="text"
+                id="ContactField" 
+                placeholder="Enter Here" 
+                class="form-control"/>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="addressField">Your Address</label>
+                <textarea
+                 id="addressField" 
+                 placeholder="Enter Here" 
+                 class="form-control"
+                 rows="3"></textarea>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="">Your Email Address </label>
+                <input type="email"
+                id="emailField" 
+                placeholder="Enter Here" 
+                class="form-control"/>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="">Select Your Photo</label>
+                <input type="file"
+                id="imageField"
+                 class="form-control"
+                />
+            </div>
+
+            <!-------------------------------------------------------Important links----------------------------------->
+            <h3 class="my-3">Important Links</h3>
+            
+            <div class="form-group mt-2">
+                <label for="linkedField">LinkedIn</label>
+                <input type="text"
+                id="linkedField" 
+                placeholder="Enter Here" 
+                class="form-control"/>
+            </div>
+
+            
+            <div class="form-group mt-2">
+                <label for="gitField">Github</label>
+                <input type="text"
+                id="gitField" 
+                placeholder="Enter Here" 
+                class="form-control"/>
+            </div>
+
+            <!----------------------------------------------professional details------------------------------->
+            <h3 class="my-3">Professional Information</h3>
+
+            <div class="form-group mt-2">
+                <label for="">Carrer Objective</label>
+                <textarea
+                 placeholder="Enter Here" 
+                 class="form-control"
+                 id="carrerField"
+                 rows="3"></textarea>
+            </div>
+
+            <div class="form-group mt-2" id="education">
+                <label for="">Academic Records</label>
+                <textarea
+                 class="form-control eqField"
+                 placeholder="Enter Here" 
+                 rows="2"></textarea>
+                 <div class="container" id="eqAddButton">
+                     <button class="btn btn-primary mt-1" onclick="addNewEqField()">Add More</button>
+                 </div>
+            </div>
+
+            
+            <div class="form-group mt-2" id="skills">
+                <label for="">Key Skills</label>
+                <textarea
+                 placeholder="Enter Here" 
+                 class="form-control ksField"
+                 rows="2"></textarea>
+                 <div class="container" id="ksAddButton">
+                     <button class="btn btn-primary mt-1" onclick="addNewSkillsField()">Add More</button>
+                 </div>
+            </div>
+
+            <div class="form-group mt-2" id="projects">
+                <label for="">Training and Projects</label>
+                <textarea 
+                placeholder="Enter Here" 
+                class="form-control tAndpField"
+                 rows="2"></textarea>
+                 <div class="container" id="tAndpAddButton">
+                     <button class="btn btn-primary mt-1" onclick="addNewProjectField()">Add More</button>
+                 </div>
+            </div>
+
+            <div class="form-group mt-2" id="achieve">
+                <label for="">Achievements</label>
+                <textarea
+                 placeholder="Enter Here" 
+                 class="form-control achiveField"
+                 rows="2"></textarea>
+                 <div class="container" id="achiveAddButton">
+                     <button class="btn btn-primary mt-1" onclick="addNewAchieve()">Add More</button>
+                 </div>
+            </div>
+            <div class="container text-center">
+                <button class="btn btn-primary btn-lg mb-2 mt-3" onclick="generateCV()">Generate CV</button>
+            </div>
+    </div>
+</div>
+
+
+    <!-------------------------------------------CV template-----------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------->
+
+    <div class="container" id="cv-template">
+        <div class="row">
+            <div class="col-md-4 py-5 text-center" style="background-color: #98AFC7;">
+                <!--------first col------->
+                <img src="https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
+                   alt="default pic"
+                   class="image"
+                   id="imageT"
+                />
+                <div class="container" style="font-size: 1.2rem;">
+                    <p id="nameT1" style="font-size: 1.2rem;">Anshika Sethiya</p>
+                    <p id="numberT" style="font-size: 1.2rem;">7339961479</p>
+                    <p id="addressT" style="font-size: 1.2rem;">Sethiya Parisar, Bus stand, Chhapiheda</p>
+                    <p id="mailT" style="font-size: 1.2rem;">anshikasethiya28@gmail.com</p>
+                </div>
+                <hr>
+
+                <p>
+                    <a id="linkedT" href="#">https://www.linkedin.com/in/anshika-sethiya-6862ba171/</a>
+                </p>
+                <p>
+                    <a id="gitT" href="#">https://github.com/AnshikaSethiya?tab=repositories</a>
+                </p>
+            </div>
+            <div class="col-md-8 py-3">
+                <!-----Second col----------->
+                <h1 class="text-center" style="font-weight: 900;" id="nameT2">Anshika Sethiya</h1>
+
+                <!----objective card----->
+                <div class="header">
+                    <h3>Career Objective</h3>
+                </div>
+
+                <div class="card-body">
+                    <p id="objectiveT">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum obcaecati est assumenda maxime explicabo animi,
+                     ex iste? Nesciunt ipsam facilis laborum suscipit odio magnam aspernatur illo. Enim, odio! Nobis, distinctio?
+                    </p>
+                </div>
+
+                <!------------Academic records------->
+                <div class="header">
+                    <h3>Academic Records</h3>
+                </div>
+
+                <div class="card-body">
+                    <ul id="AcademicT">
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                    </ul>
+                </div>
+
+                <!-----------key skills-------->
+                <div class="header">
+                    <h3>Key Skills</h3>
+                </div>
+
+                <div class="card-body">
+                    <p id="skillsT">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum obcaecati est assumenda maxime explicabo animi,
+                     ex iste? Nesciunt ipsam facilis laborum suscipit odio magnam aspernatur illo. Enim, odio! Nobis, distinctio?
+                    </p>
+                </div>
+
+                <!----------training and projects----->
+                <div class="header">
+                    <h3>Training and Projects</h3>
+                </div>
+
+                <div class="card-body">
+                    <ul id="tAndpT">
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                    </ul>
+                </div>
+
+                <!---------Achievements-------->
+                <div class="header">
+                    <h3>Achievements</h3>
+                </div>
+
+                <div class="card-body">
+                    <ul id="achieveT">
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam nihil accusantium voluptas corrupti, 
+                            ducimus beatae mollitia assumenda facere doloribus
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="container text-center">
+                    <button class="p-3 btn btn-primary" onclick="printCV()">Print CV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
